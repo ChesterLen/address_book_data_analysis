@@ -1,21 +1,17 @@
 from data.data import df
 
-duplicated_cities_counts = df['City'].value_counts()
+city_counts = df['City'].value_counts()
+most_common_cities = city_counts[city_counts > 1]
 
-duplicated_cities = duplicated_cities_counts[duplicated_cities_counts > 1]
+if not most_common_cities.empty:
+    print("Most frequently appearing cities:")
+    for city, count in most_common_cities.items():
+        print(f"City: {city}, repeats {count} times")
 
-if duplicated_cities.sum():
-    print(f'Most frequently appearing cities are:')
+state_counts = df['State'].value_counts()
+most_common_states = state_counts[state_counts > 1]
 
-    for key, value in duplicated_cities.items():
-        print(f'City: {key}: repeat {value} times')
-
-duplicated_states_count = df['State'].value_counts()
-
-duplicated_states = duplicated_states_count[duplicated_states_count > 1]
-
-if duplicated_states.sum():
-    print(f'Most frequently appearing states are:')
-
-    for key, value in duplicated_cities.items():
-        print(f'State: {key}: repeat {value} times')
+if not most_common_states.empty:
+    print("\nMost frequently appearing states:")
+    for state, count in most_common_states.items():
+        print(f"State: {state}, repeats {count} times")
