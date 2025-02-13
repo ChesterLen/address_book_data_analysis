@@ -1,10 +1,6 @@
 from data.data import df
 import matplotlib.pyplot as plt
 
-for column in df.columns:
-    for value in df[column].values:
-        print(value)
-
 state_counts = df['State'].value_counts()
 
 top_5_states = state_counts.head(5)
